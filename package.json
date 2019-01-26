@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-unit-testing-in-depth",
+  "version": "0.0.1",
+  "description": "A focused, in-depth look into Node.js unit testing, from absolute beginner to very advanced.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francisrod01/nodejs-unit-testing-in-depth.git"
+  },
+  "keywords": [
+    "udemy",
+    "nodejs",
+    "testing",
+    "unit-test"
+  ],
+  "author": {
+    "name": "Francis Rodrigues",
+    "url": "https://github.com/francisrod01"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/francisrod01/nodejs-unit-testing-in-depth/issues"
+  },
+  "homepage": "https://github.com/francisrod01/nodejs-unit-testing-in-depth#readme"
+}
