@@ -13,6 +13,32 @@ Using `mocha` you can run a `tests/` folder or a simply file:
 ~$ ./node_modules/.bin/mocha tests/<file>.js
 ```
 
+We can run instead tests on the entire project folders as below:
+
+```bash
+~$ ./node_modules/.bin/mocha './lib/**/*.test.js' --recursive
+```
+
+or just run the `npm test` command:
+
+```bash
+~$ npm test
+
+> nodejs-unit-testing-in-depth@0.0.1 test
+> mocha './lib/**/*.test.js'
+
+  foo test
+    ✓ should compare some values
+    ✓ should test some other stuff
+
+  nested test
+    - this is from the nested file
+
+
+  2 passing (10ms)
+  1 pending
+```
+
 
 ## License ##
 
