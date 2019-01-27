@@ -34,10 +34,27 @@ or just run the `npm test` command:
   nested test
     - this is from the nested file
 
-
   2 passing (10ms)
   1 pending
 ```
+
+You can also run tests using `cross-env` passing environment variables to write tests presenting a special configuration:
+
+```bash
+> nodejs-unit-testing-in-depth@0.0.1 test
+> cross-env NODE_ENV=development mocha './lib/**/*.test.js'
+
+  foo test
+ENV:  development
+    ✓ should compare some values
+    ✓ should test some other stuff
+
+  nested test
+    - this is from the nested file
+
+  2 passing (10ms)
+  1 pending
+  ```
 
 
 ## License ##
