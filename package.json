@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/francisrod01/nodejs-unit-testing-in-depth#readme",
   "dependencies": {
+    "chai": "^4.2.0",
     "mocha": "^5.2.0"
   }
 }
