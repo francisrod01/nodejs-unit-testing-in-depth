@@ -4,7 +4,7 @@
   "description": "A focused, in-depth look into Node.js unit testing, from absolute beginner to very advanced.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha './lib/**/*.test.js'"
+    "test": "cross-env NODE_ENV=development mocha './lib/**/*.test.js'"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,8 @@
   "dependencies": {
     "chai": "^4.2.0",
     "mocha": "^5.2.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
   }
 }
