@@ -29,5 +29,11 @@ describe('demo test', () => {
         done(ex);
       });
     });
+
+    it('should test a promise with return', () => {
+      return demo.addPromise(1, 2).then(result => {
+        expect(result).to.equal(3);
+      });
+    });
   });
 });
