@@ -18,5 +18,16 @@ describe('demo test', () => {
         done();
       });
     });
-  })
+  });
+
+  context('test promise', () => {
+    it('should add with a promise cb', (done) => {
+      demo.addPromise(1, 2).then(result => {
+        expect(result).to.equal(3);
+        done();
+      }).catch(ex => {
+        done(ex);
+      });
+    });
+  });
 });

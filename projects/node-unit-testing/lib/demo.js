@@ -8,3 +8,8 @@ exports.addCallback = function (a, b, callback) {
     return callback(null, a + b);
   }, 5000);
 }
+
+exports.addPromise = function (a, b) {
+  return Promise.reject(new Error('fake error on addPromise'));
+  // return Promise.resolve(a + b);
+}
