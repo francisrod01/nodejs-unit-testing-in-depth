@@ -19,3 +19,35 @@ exports.foo = () => {
   console.log('console.log was called');
   console.warn('console.warn was called');
 };
+
+
+// stub createfile
+exports.bar = async (fileName) => {
+  await exports.createFile(fileName);
+  let result = await callDB(fileName);
+
+  return result;
+};
+
+exports.createFile = (fileName) => {
+  console.log('--- in createFile');
+  // fake create file
+  return new Promise(resolve => {
+    setTimeout(() => {
+      console.log('fake file created.');
+      return Promise.resolve('done');
+    }, 100);
+  });
+};
+
+
+function callDB(fileName) {
+  console.log('--- in callDB');
+  // fake create file
+  return new Promise(resolve => {
+    setTimeout(() => {
+      console.log('fake db call.');
+      resolve('saved');
+    }, 100);
+  });
+}
