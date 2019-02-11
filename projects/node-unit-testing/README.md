@@ -27,6 +27,13 @@ $ ./node_modules/.bin/mocha lib/demo.test.js
   2 passing (8ms)
 ```
 
+## References ##
+
+- [Mocha - simple, flexible, fun javascript test framework for node.js and in the browser][6]
+- [Extends Chai with assertions for the Sinon.js mocking framework][4]
+- [Chai Assertion Library][5]
+- [rewire - Easy monkey-patching for node.js unit tests][7]
+
 ## License ##
 
 MIT
@@ -35,3 +42,7 @@ MIT
   [1]: https://www.udemy.com/nodejs-unit-testing-in-depth
   [2]: https://www.udemy.com/user/murtez-alrohani/
   [3]: https://github.com/francisrod01/
+  [4]: https://github.com/domenic/sinon-chai
+  [5]: https://www.chaijs.com/plugins/
+  [6]: https://github.com/mochajs/mocha
+  [7]: https://github.com/jhnns/rewire
