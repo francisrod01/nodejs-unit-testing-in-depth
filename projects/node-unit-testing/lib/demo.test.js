@@ -62,5 +62,13 @@ describe('demo test', () => {
       expect(spy).to.have.been.calledOnce;
       spy.restore();
     });
+
+    it('should stub console.warn', () => {
+      let stub = sinon.stub(console, 'warn')
+        .callsFake(() => { console.log('message from stub') });
+
+      demo.foo();
+      expect(stub).to.have.been.calledOnce;
+    });
   });
 });
