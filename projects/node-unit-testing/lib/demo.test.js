@@ -1,8 +1,11 @@
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
+const sinon = require('sinon');
+const sinonChai = require('sinon-chai');
 const expect = chai.expect;
 
 chai.use(chaiAsPromised);
+chai.use(sinonChai);
 
 const demo = require('./demo');
 
@@ -47,6 +50,17 @@ describe('demo test', () => {
 
     it('should test promise with chai as promised', async () => {
       await expect(demo.addPromise(1, 2)).to.eventually.equal(3);
-    })
+    });
+  });
+
+  context('test doubles', () => {
+    it('should spy on log', () => {
+      let spy = sinon.spy(console, 'log');
+      demo.foo();
+
+      expect(spy.calledOnce).to.be.true;
+      expect(spy).to.have.been.calledOnce;
+      spy.restore();
+    });
   });
 });
