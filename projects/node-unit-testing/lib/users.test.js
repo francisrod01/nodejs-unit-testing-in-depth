@@ -26,7 +26,8 @@ describe('users', () => {
     sampleUser = {
       id: 123,
       name: 'foo',
-      email: 'foo@bar.com'
+      email: 'foo@bar.com',
+      save: sandbox.stub().resolves()
     };
 
     findStub =
@@ -151,6 +152,26 @@ describe('users', () => {
       saveStub.rejects(new Error('fake'));
 
       await expect(users.create(sampleUser)).to.eventually.be.rejectedWith('fake');
+    });
+  });
+
+  context('update user', () => {
+    it('should find user by id', async () => {
+      await users.update(123, { age: 35 });
+
+      expect(findStub).to.have.been.calledWith(123);
+    });
+
+    it('should call user.save', async () => {
+      await users.update(123, { age: 35 });
+
+      expect(sampleUser.save).to.have.been.calledOnce;
+    });
+
+    it('should reject if there is an error', async () => {
+      findStub.throws(new Error('fake error'));
+
+      await expect(users.update(123, { age: 35 })).to.eventually.be.rejectedWith('fake error');
     });
   });
 });
