@@ -10,7 +10,7 @@ const expect = chai.expect;
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
-const users = rewire('./users');
+let users = rewire('./users');
 const mailer = require('./mailer');
 
 const sandbox = sinon.createSandbox();
