@@ -97,4 +97,40 @@ describe('app', () => {
         });
     });
   });
+
+  context('handleError', () => {
+    let handleError, res, statusStub, jsonStub;
+
+    beforeEach(() => {
+      jsonStub = sandbox.stub().returns('done');
+      statusStub = sandbox.stub().returns({
+        json: jsonStub
+      });
+      res = {
+        status: statusStub
+      };
+
+      handleError = app.__get__('handleError');
+    });
+
+    it('should check error instance and format message', (done) => {
+      let result = handleError(res, new Error('fake'));
+
+      expect(statusStub).to.have.been.calledWith(400);
+      expect(jsonStub).to.have.been.calledWith({
+        error: 'fake'
+      });
+
+      done();
+    });
+
+    it('should return object without changing it if not instance of error', (done) => {
+      let result = handleError(res, { id: 1, message: 'fake error' });
+
+      expect(statusStub).to.have.been.calledWith(400);
+      expect(jsonStub).to.have.been.calledWith({ id: 1, message: 'fake error' });
+
+      done();
+    });
+  });
 });

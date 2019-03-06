@@ -36,4 +36,15 @@ app.delete('/user/:id', auth.isAuthorized, (req, res) => {
 });
 
 
+function handleError (res, err) {
+  if (err instanceof Error) {
+    return res.status(400).json({
+      error: err.message
+    });
+  }
+
+  return res.status(400).json(err);
+}
+
+
 module.exports = app;
