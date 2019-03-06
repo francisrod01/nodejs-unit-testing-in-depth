@@ -42,7 +42,18 @@ class Order {
     return o;
   }
 
-  cancel() {}
+  cancel() {
+    // ..some logic..
+
+    this.status = 'Cancelled';
+    this.updatedAt = Date.now();
+    this.shipping = 0;
+    this.total = 0;
+
+    console.warn('Order cancelled');
+
+    return true;
+  }
 }
 
 Order.prototype.ship = function () {}

@@ -58,4 +58,14 @@ describe('order', () => {
     expect(result).to.have.property('updatedAt').to.be.a('Number');
     // rest of props
   });
+
+  it('should cancel an order, update status and set shipping and total to zero', () => {
+    let result = o.cancel();
+
+    expect(warnStub).to.have.been.calledWith('Order cancelled');
+    expect(dateSpy).to.have.been.calledThrice;
+    expect(o.status).to.equal('Cancelled');
+    expect(o.shipping).to.equal(0);
+    expect(o.total).to.equal(0);
+  });
 });
