@@ -47,4 +47,15 @@ describe('order', () => {
     expect(o.cancel).to.be.a('function');
     expect(o.ship).to.be.a('function');
   });
+
+  it('should update status to active and return order details', () => {
+    let result = o.save();
+
+    expect(dateSpy).to.have.been.calledThrice;
+    expect(o.status).to.equal('Active');
+    expect(result).to.be.a('Object');
+    expect(result).to.have.property('user').to.equal('foo');
+    expect(result).to.have.property('updatedAt').to.be.a('Number');
+    // rest of props
+  });
 });

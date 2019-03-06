@@ -23,7 +23,24 @@ class Order {
     this.total = this.subtotal + this.shipping;
   }
 
-  save() {}
+  save() {
+    // ..some logic..
+
+    this.status = 'Active';
+    this.updatedAt = Date.now();
+
+    let o = {
+      ref: this.ref,
+      user: this.user.name,
+      updatedAt: this.updatedAt,
+      status: this.status,
+      items: this.items,
+      shipping: this.shipping,
+      total: this.total
+    };
+
+    return o;
+  }
 
   cancel() {}
 }
