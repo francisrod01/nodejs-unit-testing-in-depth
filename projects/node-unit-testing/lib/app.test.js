@@ -21,5 +21,14 @@ describe('app', () => {
     sandbox.restore();
   });
 
-  //
+  context('GET /', () => {
+    it('should get /', (done) => {
+      request(app).get('/')
+        .expect(200)
+        .end((err, response) => {
+          expect(response.body).to.have.property('name').to.equal('Foo Fooing Bar');
+          done(err);
+        });
+    });
+  });
 });
