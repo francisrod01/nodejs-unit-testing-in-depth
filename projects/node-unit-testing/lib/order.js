@@ -56,7 +56,10 @@ class Order {
   }
 }
 
-Order.prototype.ship = function () {}
+Order.prototype.ship = function () {
+  this.status = 'Shipped';
+  this.updatedAt = Date.now();
+}
 
 
 module.exports = Order;

@@ -68,4 +68,11 @@ describe('order', () => {
     expect(o.shipping).to.equal(0);
     expect(o.total).to.equal(0);
   });
+
+  it('should update status to shipped', () => {
+    o.ship();
+
+    expect(o.status).to.equal('Shipped');
+    expect(dateSpy).to.have.been.calledThrice;
+  });
 });
