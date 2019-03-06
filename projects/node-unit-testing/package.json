@@ -21,6 +21,7 @@
   "dependencies": {
     "chai": "^4.2.0",
     "crypto": "^1.0.1",
+    "express": "^4.16.4",
     "mocha": "^5.2.0",
     "mongoose": "^5.4.14"
   },
