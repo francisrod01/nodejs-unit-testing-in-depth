@@ -22,4 +22,13 @@ class Order {
 
     this.total = this.subtotal + this.shipping;
   }
+
+  save() {}
+
+  cancel() {}
 }
+
+Order.prototype.ship = function () {}
+
+
+module.exports = Order;
