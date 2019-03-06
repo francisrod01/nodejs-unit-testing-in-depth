@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 const dbase = require('../config/database');
+const auth = require('./auth');
 const users = require('./users');
 
 mongoose.connect(dbase());
@@ -23,6 +24,13 @@ app.get('/', (req, res) => {
 app.post('/user', (req, res) => {
   users
     .create(req.body)
+    .then(result => res.json(result))
+    .catch(err => handleError(res, err));
+});
+
+app.delete('/user/:id', auth.isAuthorized, (req, res) => {
+  users
+    .delete(req.params.id)
     .then(result => res.json(result))
     .catch(err => handleError(res, err));
 });
