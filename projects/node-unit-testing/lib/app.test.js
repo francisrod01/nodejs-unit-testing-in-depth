@@ -71,7 +71,7 @@ describe('app', () => {
     });
   });
 
-  context('DELETE /user:/id', () => {
+  context('DELETE /user/:id', () => {
     let authStub, deleteStub;
 
     beforeEach(() => {
