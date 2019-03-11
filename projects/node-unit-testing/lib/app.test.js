@@ -71,6 +71,42 @@ describe('app', () => {
     });
   });
 
+  context('GET /user/:id', () => {
+    let getStub, errorStub;
+
+    it ('should get a user by your own id', (done) => {
+      getStub = sandbox.stub(users, 'get').resolves('fake_get');
+
+      request(app).get('/user/123')
+        .expect(200)
+        .end((err, response) => {
+          expect(getStub).to.have.been.calledOnce;
+          expect(getStub).to.have.been.calledWithMatch(123);
+          expect(response.body).to.equal('fake_get');
+          done(err);
+        });
+    });
+
+    it('should call handleError on error', (done) => {
+      getStub = sandbox.stub(users, 'get').rejects(new Error('fake_error'));
+
+      errorStub = sandbox.stub().callsFake((res, error) => {
+        return res.status(400).json({ error: 'fake' });
+      });
+
+      app.__set__('handleError', errorStub);
+
+      request(app).get('/user/123')
+        .expect(400)
+        .end((err, response) => {
+          expect(errorStub).to.have.been.calledOnce;
+          expect(response.body).to.have.property('error').to.equal('fake');
+
+          done(err);
+        });
+    });
+  });
+
   context('DELETE /user/:id', () => {
     let authStub, deleteStub;
 

@@ -28,6 +28,13 @@ app.post('/user', (req, res) => {
     .catch(err => handleError(res, err));
 });
 
+app.get('/user/:id', (req, res) => {
+  users
+    .get(req.params.id)
+    .then(result => res.json(result))
+    .catch(err => handleError(res, err));
+});
+
 app.delete('/user/:id', auth.isAuthorized, (req, res) => {
   users
     .delete(req.params.id)
